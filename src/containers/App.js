@@ -1,4 +1,6 @@
 import React from 'react';
+import sudoku from 'sudoku-umd';
+import Board from '../components.Board.js';
 
 class App extends React.Component {
 	constuctor(props){
