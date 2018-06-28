@@ -1,9 +1,9 @@
 import React from 'react';
 import sudoku from 'sudoku-umd';
-import Board from '../components.Board.js';
+import Board from '../components/Board.js';
 
 class App extends React.Component {
-	constuctor(props){
+	constructor(props){
 		super(props);
 		this.state = {
 			initialBoard: '',
