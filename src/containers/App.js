@@ -6,8 +6,8 @@ class App extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			initialBoard: '',
-			board: ''
+			initialBoard: '',//nie zmienia się w ramach jedenj gry, potrzebny do restartu gry
+			board: '' //notuje wszystkie zmiany
 		}
 	}
 	//szkic
