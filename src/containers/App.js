@@ -12,35 +12,45 @@ class App extends React.Component {
 		}
 	}
 	start() {
+		const sudokuBoard = sudoku.generate("medium"); 
+
 		this.setState({
-			board:   //co tu powinno być?? losowanie nowej planszy ?? 
-			initialBoard: this.state.board
+			board: sudokuBoard,
+			initialBoard: sudokuBoard.slice(),
 		});
 	}
-// restart usuwa wszystkie wpisane przez użtkowanika cyfry, ale pozostawia daną planszę 
-	restart() {
 
+	restart() {
+		this.setState({
+			board: this.state.initialBoard.slice()
+		});
 	}
 
 	//solve rozwiązuje aktualną grę i wyświetla rozwiązanie na planszy 
-/*	solve() {
-		const solution = solve(this.state.initialBoard)// skąd znane jest rozwiązanie?? czy to dobry zapis?? initialBoard czy Board?
+	solve() {
+		const solution = sudoku.solve(this.state.initialBoard)// skąd znane jest rozwiązanie?? czy to dobry zapis?? initialBoard czy Board?
+
 		this.setState({
 			board: solution 
-		})
+		});
 	}
-*/
+
 	//checkSolve rozwiązuje aktualną grę, ale nie wyświetla rozwiązania, 
 	//tylko komunikat informujący czy aktualnie wpisane cyfry są poprawne 
-/*	checkSolve() {
-		const check = //porównanie z rozwiązaniem
+	checkSolve() {
+		const check = sudoku.solve(this.state.board);
 		if (check) {
 			alert ('OK!')
 		} else {
 			alert ('Try again!')
 		}
 	}
-	*/
+
+	handleChange(index, value) {
+		const board = this.state.board.slice(0, index) + value + this.state.board.slice(index + 1);
+
+		this.setState({ board });
+	}
 
 	render() {
 	    return (
@@ -50,7 +60,7 @@ class App extends React.Component {
 			   <div className="buttons">
 			       <button onClick={this.start.bind(this)}>New game</button>
 			       <button onClick={this.restart.bind(this)}>Restart</button> 
-			       <button onClick={this.solveCheck.bind(this)}>Check</button>
+			       <button onClick={this.checkSolve.bind(this)}>Check</button>
 			       <button onClick={this.solve.bind(this)}>Solve</button>			       
 			   </div>
 			</div>
