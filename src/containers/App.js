@@ -25,11 +25,9 @@ class App extends React.Component {
 			board: this.state.initialBoard.slice()
 		});
 	}
-
 	//solve rozwiązuje aktualną grę i wyświetla rozwiązanie na planszy 
 	solve() {
-		const solution = sudoku.solve(this.state.initialBoard)// skąd znane jest rozwiązanie?? czy to dobry zapis?? initialBoard czy Board?
-
+		const solution = sudoku.solve(this.state.initialBoard)
 		this.setState({
 			board: solution 
 		});
@@ -42,13 +40,12 @@ class App extends React.Component {
 		if (check) {
 			alert ('OK!')
 		} else {
-			alert ('Try again!')
+			alert ('Wrong!')
 		}
 	}
 
 	handleChange(index, value) {
 		const board = this.state.board.slice(0, index) + value + this.state.board.slice(index + 1);
-
 		this.setState({ board });
 	}
 
@@ -67,6 +64,5 @@ class App extends React.Component {
 		)
 	}
 }
-
 export default App;
 
